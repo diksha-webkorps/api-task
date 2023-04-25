@@ -1,0 +1,15 @@
+current directory: /home/dell/api-task/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.16.0/ext/bootsnap
+/home/dell/.rvm/rubies/ruby-2.7.4/bin/ruby -I /home/dell/.rvm/rubies/ruby-2.7.4/lib/ruby/2.7.0 -r ./siteconf20230424-26651-1nyns07.rb extconf.rb
+creating Makefile
+
+current directory: /home/dell/api-task/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.16.0/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /home/dell/api-task/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.16.0/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.so
+
+current directory: /home/dell/api-task/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.16.0/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.so ./.gem.20230424-26651-1tic6e6/bootsnap
