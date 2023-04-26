@@ -34,14 +34,14 @@ class Api::V1::BaseController < ApplicationController
       render json: { errors: ['Invalid token'] }, status: :unauthorized
       return
     end
-    if token.updated_at < ENV['SESSION_TIMEOUT'].to_i.minutes.ago
-      render json: { errors: ['Session expired'] }, status: :unauthorized
-      return
-    end
-    if token.created_at < ENV['SESSION_TIMEOUT'].to_i.minutes.ago
-      render json: { errors: ['Session force expired'] }, status: :unauthorized
-      return
-    end
+    # if token.updated_at < ENV['SESSION_TIMEOUT'].to_i.minutes.ago
+    #   render json: { errors: ['Session expired'] }, status: :unauthorized
+    #   return
+    # end
+    # if token.created_at < ENV['SESSION_TIMEOUT'].to_i.minutes.ago
+    #   render json: { errors: ['Session force expired'] }, status: :unauthorized
+    #   return
+    # end
 
     token.update(updated_at: Time.now)
   end
