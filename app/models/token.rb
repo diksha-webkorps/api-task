@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 require 'json_web_token'
+# tocken
 class Token < ApplicationRecord
   belongs_to :user
 
@@ -9,7 +12,7 @@ class Token < ApplicationRecord
   def self.token_for_user(user, data = {})
     data = {
       user_id: user.id,
-      generated_at: Time.now,
+      generated_at: Time.now
       # exp: 720.minutes.from_now.to_i
     }.merge(data)
 
