@@ -34,14 +34,14 @@ class Api::V1::BaseController < ApplicationController
       render json: { errors: ['Invalid token'] }, status: :unauthorized
       return
     end
-    # if token.updated_at < ENV['SESSION_TIMEOUT'].to_i.minutes.ago
-    #   render json: { errors: ['Session expired'] }, status: :unauthorized
-    #   return
-    # end
-    # if token.created_at < ENV['SESSION_TIMEOUT'].to_i.minutes.ago
-    #   render json: { errors: ['Session force expired'] }, status: :unauthorized
-    #   return
-    # end
+    if token.updated_at < 720.to_i.minutes.ago
+      render json: { errors: ['Session expired'] }, status: :unauthorized
+      return
+    end
+    if token.created_at < 720.to_i.minutes.ago
+      render json: { errors: ['Session force expired'] }, status: :unauthorized
+      return
+    end
 
     token.update(updated_at: Time.now)
   end
@@ -57,7 +57,7 @@ class Api::V1::BaseController < ApplicationController
   end
 
   def decode_token(token)
-      return HashWithIndifferentAccess.new(JWT.decode(token, KEY)[0])
+      return HashWithIndifferentAccess.new(JWT.decode(token, KEY )[0])
     rescue
       nil
     # JsonWebToken.decode(token)
@@ -68,5 +68,5 @@ class Api::V1::BaseController < ApplicationController
   rescue JWT::VerificationError, JWT::DecodeError, ActiveRecord::RecordNotFound => e
     render json: { errors: [e.message] }, status: :unauthorized
   end
-
+ 
 end
