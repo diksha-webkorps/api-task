@@ -11,7 +11,7 @@ module Api
         pages = Page.all
         total_records = pages.size
         unless params['search_term'].nil?
-          search_key = `%` + params['search_term'].downcase + `%`
+          search_key = '%'+ params['search_term'].downcase+'%'
           pages = pages.where('( LOWER(pages.name) like ?) ', search_key)
         end
         pages = pages.paginate(page: params[:page], per_page: 10).order('id DESC') if params[:page].present?
